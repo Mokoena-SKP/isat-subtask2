@@ -41,3 +41,30 @@ int binaryToDecimal(string binary) {
     
     return result;
 }
+// Third function - decimal to hex is trickier because of letters
+// Took me some tries to get the A B C D E F part right
+string decimalToHexadecimal(int number) {
+    if (number == 0) {
+        return "0";
+    }
+    
+    string result = "";
+    
+    while (number > 0) {
+        int leftover = number % 16;  // Divide by 16 this time
+        
+        if (leftover < 10) {
+            // For 0-9 just turn into character
+            char digit = '0' + leftover;
+            result = digit + result;
+        } else {
+            // For 10,11,12,13,14,15 use A,B,C,D,E,F
+            char letter = 'A' + (leftover - 10);
+            result = letter + result;
+        }
+        
+        number = number / 16;
+    }
+    
+    return result;
+}
