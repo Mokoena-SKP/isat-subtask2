@@ -104,3 +104,70 @@ int getRandomNumber() {
     }
     return (counter % 100);   // Keep between 0-99
 }
+// Show the menu - kept it simple
+void showMenu() {
+    cout << "\n--- Number Converter ---" << endl;
+    cout << "1. Decimal to Binary" << endl;
+    cout << "2. Binary to Decimal" << endl;
+    cout << "3. Decimal to Hex" << endl;
+    cout << "4. Hex to Decimal" << endl;
+    cout << "5. Demo (random number)" << endl;
+    cout << "6. Exit" << endl;
+    cout << "Pick one: ";
+}
+
+int main() {
+    int choice;
+    
+    cout << "Number Converter Program" << endl;
+    cout << "Made this for my assignment" << endl;
+    
+    // Keep running until user exits
+    while (true) {
+        showMenu();
+        cin >> choice;
+        
+        if (choice == 1) {
+            int num;
+            cout << "Enter number: ";
+            cin >> num;
+            cout << num << " in binary = " << decimalToBinary(num) << endl;
+            
+        } else if (choice == 2) {
+            string bin;
+            cout << "Enter binary: ";
+            cin >> bin;
+            cout << bin << " in decimal = " << binaryToDecimal(bin) << endl;
+            
+        } else if (choice == 3) {
+            int num;
+            cout << "Enter number: ";
+            cin >> num;
+            cout << num << " in hex = " << decimalToHexadecimal(num) << endl;
+            
+        } else if (choice == 4) {
+            string hex;
+            cout << "Enter hex: ";
+            cin >> hex;
+            cout << hex << " in decimal = " << hexadecimalToDecimal(hex) << endl;
+            
+        } else if (choice == 5) {
+            int random = getRandomNumber();
+            cout << "Random number: " << random << endl;
+            cout << "In binary: " << decimalToBinary(random) << endl;
+            
+        } else if (choice == 6) {
+            cout << "Hope thisprogram helped" << endl;
+            break;
+            
+        } else {
+            cout << "That's not valid, try again" << endl;
+        }
+        
+        cout << "\nPress enter...";
+        cin.ignore();
+        cin.get();
+    }
+    
+    return 0;
+}
