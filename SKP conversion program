@@ -1,0 +1,27 @@
+include <iostream>
+//Mokoena SKP 9503215085089
+using namespace std;
+
+// First function - turning regular numbers into binary
+// This one took me a while to figure out but basically you keep dividing by 2
+string decimalToBinary(int number) {
+    // If it's zero just return zero - learned this the hard way
+    if (number == 0) {
+        return "0";
+    }
+    
+    string result = "";
+    
+    // Keep going until number becomes zero
+    while (number > 0) {
+        int leftover = number % 2;  // Get what's left when divided by 2
+        if (leftover == 0) {
+            result = "0" + result;  // Put 0 at the front
+        } else {
+            result = "1" + result;  // Put 1 at the front
+        }
+        number = number / 2;  // Make number smaller
+    }
+    
+    return result;
+}
