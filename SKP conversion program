@@ -68,3 +68,39 @@ string decimalToHexadecimal(int number) {
     
     return result;
 }
+// Fourth function - hex back to decimal
+// This one was confusing at first with all the letters
+int hexadecimalToDecimal(string hex) {
+    int result = 0;
+    int powerOfSixteen = 1;  // 1, then 16, then 256...
+    
+    // Go backwards like before
+    for (int i = hex.length() - 1; i >= 0; i--) {
+        int value;
+        
+        // Figure out what each character is worth
+        if (hex[i] >= '0' && hex[i] <= '9') {
+            value = hex[i] - '0';  // Turn '5' into 5
+        } else if (hex[i] >= 'A' && hex[i] <= 'F') {
+            value = (hex[i] - 'A') + 10;  // Turn 'A' into 10, 'B' into 11...
+        } else if (hex[i] >= 'a' && hex[i] <= 'f') {
+            value = (hex[i] - 'a') + 10;  // Same for lowercase
+        }
+        
+        result = result + (value * powerOfSixteen);
+        powerOfSixteen = powerOfSixteen * 16;
+    }
+    
+    return result;
+}
+
+// My simple way to get random numbers without fancy stuff
+// Just adds numbers and keeps them reasonable
+int getRandomNumber() {
+    static int counter = 17;  // Remember this number between calls
+    counter = counter + 7;    // Add 7 each time
+    if (counter > 200) {      // Don't let it get too big
+        counter = counter - 150;
+    }
+    return (counter % 100);   // Keep between 0-99
+}
